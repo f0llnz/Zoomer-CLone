@@ -1,0 +1,181 @@
+$primaryColor:#ff5000;
+$secondaryColor:#fb7613;
+$textColor:#0a3251;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body{
+    display: flex;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MainHeader{
+    font-family: 'FiraGO', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.navColumn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navColumn h1 {
+    color: $primaryColor;
+    margin-bottom: 0px;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+}
+
+.searchbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-family: 'Fira Mono'
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile p {
+    font-size: 14px;
+    color: $textColor;
+    position: relative;
+    top: 2px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart p {
+    font-size: 14px;
+    color: $textColor;
+    position: relative;
+    top: 2px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.searchbar{
+    width: 900px;
+    gap: 15px;
+    height: 4.375rem;
+    padding-right: 100px;
+}
+
+.searchinput{
+    width: 90%;
+    height: 70%;
+    border-radius: 6px;
+    border: solid 1px #eff0f2;
+    padding: 0 196px 0 25px;
+    font-size: 12px;
+    color: $textColor;
+}
+
+.loop{
+    margin-left: -60px;
+}
+
+.mteli{
+    border-top: 1px solid #eff0f2;
+}
+
+.Navigation {
+    position: absolute;
+    top: auto; 
+    z-index: 1;
+    background-color: white;  
+    height: 29.67rem;
+    min-height: 29.67rem;
+    min-width: 13.188rem;
+    padding-left: 0;
+    margin-top: 4rem;
+        & {
+            list-style: none;
+            line-height: 3rem;
+            font-size: 12px;
+            color: #0a3251;
+            font-family: 'FiraGO', sans-serif;
+            font-weight: 500;
+        }
+}
+
+.Header{
+    background-color: $primaryColor;
+    position: absolute;
+    top: auto; 
+    z-index: 2;
+    height: 4rem;
+    min-height: 4rem;
+    min-width: 13.188rem;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 4.7rem;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1.5rem;
+}
+
+.NavItem{
+    text-decoration: none;
+    color: inherit;
+    pointer-events: none;
+}
+
+ul li {
+    border-bottom: 1px solid rgb(247, 243, 243);
+    width: 13.2rem;
+    transition: background-color 0.3s;
+    padding-left: 1rem;
+    cursor: pointer;
+}
+
+ul li:hover {
+    background-color: #f0f0f0;
+}
+
+.Hname{
+    font-family: 'FiraGO', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    font-weight: normal;
+    font-weight: 700;
+    padding-top: 0.35rem;
+}
+
+.ListN{
+    width: 20px;
+    height: 20px;
+}

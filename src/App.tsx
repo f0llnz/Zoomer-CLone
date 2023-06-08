@@ -1,7 +1,7 @@
 import './App.scss'
 
 import Home from './MainPage/MainPage'
-import Detailed from './SingleItem/SingleItem'
+import Detailed from './SingleItem/ChosenItem'
 
 import {Route, Routes} from 'react-router-dom'
 

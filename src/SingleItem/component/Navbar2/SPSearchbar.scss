@@ -1,0 +1,85 @@
+$primaryColor:#ff5000;
+$secondaryColor:#fb7613;
+$textColor:#0a3251;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Main{
+    background: white;
+}
+
+.Header{
+    display: flex;
+    flex-direction: row;
+}
+
+.Nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.blue{
+    background-color: $textColor;
+    width:275px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 135px;
+    padding-left: 20px;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.searchinput{
+    border: 1px solid rgb(236, 235, 235);
+}
+
+.orange{
+    background-color: $primaryColor;
+    width:990px;
+    height: 60px;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    align-items: center;
+    display: flex;
+    padding-left: 600px;
+        ul{
+            list-style: none;
+            border-bottom: none;
+            display: flex;
+            margin-bottom: 0;
+                li{
+                    border: none;
+                    width: auto;
+                    color: white;
+                    font-weight: 400;
+                    line-height: 60px;
+                    font-size: 14px;
+                    text-decoration: none;
+                        a{
+                            text-decoration: none;
+                            color:white
+                        }
+                        &:hover{
+                            background-color: transparent;
+                            text-decoration: underline;
+                        }
+                }
+        }
+}
+
+.WNav{
+    color: white;
+    font-weight: 700;
+    margin-bottom: 0;
+    margin-top: 5px;
+}

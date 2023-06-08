@@ -4,7 +4,7 @@ import ProfileP from './icons/profile.svg'
 import CartI from './icons/cart.svg'
 import List from '../Searchbar/icons/list.svg'
 
-import {Link, Router} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import './Searchbar.scss'
 

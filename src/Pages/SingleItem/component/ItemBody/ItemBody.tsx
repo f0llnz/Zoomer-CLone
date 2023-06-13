@@ -14,26 +14,56 @@ import MasterC from '../Imgs/mastercard.png'
 import Visa from '../Imgs/visa.png'
 import Taxfree from '../Imgs/taxfree.svg'
 
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import ajax from '../../../../utils/service/ajax';
+import { ChosenListItems } from '../../../../@types/general'
+
+
+
+
 export default function ItemBody(){
+    const [singleProduct, setSingleProduct] = useState<ChosenListItems | null>(null);
+
+    const { id } = useParams();
+    console.log(id);
+  
+    useEffect(() => {
+        const getItem = async () => {
+          try {
+            const res = await fetch(`http://localhost:8080/product/${id}`);
+            const data = await res.json();
+            setSingleProduct(data);
+            console.log(singleProduct)
+          } catch (error) {
+            console.log("error", error);
+          }
+        };
+        getItem();
+      }, [id]);
+
+  if (!singleProduct) {
+    return <div>Loading...</div>;
+  }
+
     return(
         <div className="ChosenItem">
             <div className="itembody">
                 <div className="product-img">
-                <img src={FirstPic} className='ImgIcon' alt="phonepic" width={350}/>
-                <div className="underimages">
-                    <img src={FirstPic} alt="FirstPic" width={70} className='piC Y' />
-                    <img src={SecondPic} alt="FirstPic" width={70} className='piC' />
-                    <img src={ThirdPic} alt="FirstPic" width={70} className='piC' />
-                </div>
+                    <img src={singleProduct?.images?.[0]} className='ImgIcon' alt="phonepic" width={350}/>
+                    <div className="underimages">
+                    {singleProduct?.images?.slice(1).map((image, index) => (
+                    <img src={image} alt={`Product Image ${index + 1}`} width={70} className='piC' key={index} />
+                    ))}
+                    </div>
                 </div>
                 <div className="productinfo">
                     <div className="generalname">
                         <div className="firstthree">
-                            <img src={AppleIcon} alt="Apple" width={30}/>
-                            <p>Apple</p>
-                            <h6>#ZOOM-028810</h6>
+                            <p>{singleProduct.brand}</p>
+                            <h6>#XZOOM-{singleProduct.id}</h6>
                         </div>
-                        <h3>Apple iPhone 14 | 128GB Blue</h3>
+                        <h3>{singleProduct.title}</h3>
                         <div className="nexttwo">
                             <p><img src={arrows} alt="arrows" style={{ marginRight: '10px' }} />შედარება</p>
                             <p><img src={location} alt="location" style={{ marginRight: '10px' }} />მარაგშია</p>
@@ -71,22 +101,29 @@ export default function ItemBody(){
                             </div>
                         </div>
                         <div className="rightt">
-                            <p>
-                                <span className="light">ეკრანის ზომა:  ------------  </span>
-                                <span className="dark"> 6.1 inches</span>
-                            </p>
-                            <p>
-                                <span className="light">ოპერატიული მეხსიერება  ------ </span>
-                                <span className="dark"> 6GB</span>
-                            </p>
-                            <p>
-                                <span className="light">შიდა მეხსიერება:  ----------  </span>
-                                <span className="dark"> 128GB</span>
-                            </p>
-                            <p>
-                                <span className="light">მთავარი კამერა: ----------</span>
-                                <span className="dark"> 12+12 MP</span>
-                            </p>
+                            <div className="righttup">
+                                <p>
+                                    <span className="light">ეკრანის ზომა:  ------------  </span>
+                                    <span className="dark"> 6.1 inches</span>
+                                </p>
+                                <p>
+                                    <span className="light">ოპერატიული მეხსიერება  ------ </span>
+                                    <span className="dark"> 6GB</span>
+                                </p>
+                                <p>
+                                    <span className="light">შიდა მეხსიერება:  ----------  </span>
+                                    <span className="dark"> 128GB</span>
+                                </p>
+                                <p>
+                                    <span className="light">მთავარი კამერა: ----------</span>
+                                    <span className="dark"> 12+12 MP</span>
+                                </p>
+                            </div>
+                            <div className="righttdown">
+                                <p>
+                                    {singleProduct.description}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,8 +131,8 @@ export default function ItemBody(){
             <div className="Sale">
                 <div className="price">
                     <div className="priceinfo">
-                        <p className='Original'>2 499 ₾</p>
-                        <p className='Now'>2 349 ₾</p>
+                        <p className='Original'>{singleProduct.price - 100} ₾</p>
+                        <p className='Now'>{singleProduct.price} ₾</p>
                         <p><img src={Eye} alt="eye" style={{ marginRight: '10px' }} /> ფასის კონტროლი</p>
                         <p><img src={Lock} alt="lock" style={{ marginRight: '10px' }} /> ფასის დაზღვევა</p>
                     </div>
@@ -122,3 +159,7 @@ export default function ItemBody(){
         </div>
     )
 }
+
+
+
+

@@ -1,0 +1,93 @@
+.NPBody{
+    position: relative;
+    width: 294px;
+    margin: 10px;
+    border-radius: 7px;
+    display: inline-block;
+    background-color: #ffffff;
+    cursor: pointer;
+    z-index: 1;
+    border-right: 1px solid rgb(244, 244, 244);
+        &:hover{
+            .NPItemTitle{
+                color: #fe5f55;
+                text-decoration: underline;
+            }
+        }
+        .mainInfo{
+            display: flex;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+            justify-content: space-between;
+            align-items: center;
+            .pricenpinfo{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                    .top{
+                        display: flex;
+                        align-items: center;
+                            .grayy{
+                                margin-bottom: 0;
+                                padding-left: 10px;
+                                text-decoration: line-through;
+                                font-size: 15px;
+                                font-weight: 600;
+                                color: #7b838e;
+                                display: inline-block;
+                            }
+                    }
+            }
+            .npicons{
+                display: flex;
+                gap: 5px;
+                .firstone{
+                    background: #99a8b4;
+                    width: 31px;
+                    height: 31px;
+                    border-radius: 3px;
+                    background-color: #99a8b4;
+                    display: inline-flex;
+                    justify-content: center;
+                    transition: all .2s ease-in-out;
+                    cursor: pointer;
+                        &:hover{
+                            background-color: #0a3251;
+                        }
+                }
+            }
+        }
+}
+
+.NPItemTitle{
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    color: #0a3251;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    padding: 3px;
+}
+
+.mainnpinfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+        .borangeb{
+            width: 50px;
+            position: relative;
+            left: 111px;
+            top:-0.95rem;
+            background-color: #82e36a;
+        }
+        .orangeb{
+            top: -0.95rem;
+            padding: 5px;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            background-color: #82e36a;
+        }
+}

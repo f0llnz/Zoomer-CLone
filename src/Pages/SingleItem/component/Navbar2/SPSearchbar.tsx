@@ -3,15 +3,25 @@ import SearchI from '../Imgs/search.png'
 import ProfileP from '../Imgs/profile.svg'
 import CartI from '../Imgs/Cart.svg'
 import List from '../Imgs/List.svg'
+import CategoryList from '../CategoryList/CategoryList'
+
+import { useState } from 'react'
 
 import './SPSearchbar.scss'
+
 import { Link } from 'react-router-dom'
 
 export default function SPSearchbar() {
+    const [isOpen, setIsOpen] = useState(false)
+
+
+
     return(
         <div className="Main">
-            <div className="navColumn">   
-                <img src={ZLogo} width={169} height={70} alt="Zoomer Logo" />
+            <div className="navColumn"> 
+                <Link to={'/'}>
+                    <img src={ZLogo} width={169} height={70} alt="Zoomer Logo" />
+                </Link>
                 <div className="searchbar">
                     <input
                     className='searchinput' 
@@ -34,8 +44,11 @@ export default function SPSearchbar() {
 
             <div className="Nav">
                 <div className="blue">
-                    <img src={List} alt="ListIcon" width={20} height={20}/>
+                    <img src={List} className='ListIcon' alt="ListIcon" width={20} height={20} onClick={() => setIsOpen(
+                        (prev) => !prev
+                    )}/>
                     <p className='WNav'>ნავიგაცია</p>
+                    { isOpen && (<CategoryList />) }
                 </div>
                 <div className="orange">
                     <ul>

@@ -26,13 +26,13 @@ function Searchbar() {
                             </div>
                         </span> 
                         <ul className='Navigation'>
-                            <li><Link to="/detailed" className='NavItem'>ტელეფონი</Link></li>
-                            <li><Link to=" " className='NavItem'>კომპიუტერები</Link></li>
-                            <li><Link to=" " className='NavItem'>ყურსასმენები</Link></li>
-                            <li><Link to=" " className='NavItem'>აუდიო სისტემა</Link></li>
-                            <li><Link to=" " className='NavItem'>ტელევიზორი</Link></li>
-                            <li><Link to=" " className='NavItem'>გეიმინგი</Link></li>
-                            <li><Link to=" " className='NavItem'>ფოტო | ვიდეო | ტექნიკა</Link></li>
+                            <Link to="/phones" className='NavItem'><li>ტელეფონი</li></Link>
+                            <Link to="/computers" className='NavItem'><li>კომპიუტერები</li></Link>
+                            <Link to="/headphones" className='NavItem'><li>ყურსასმენები</li></Link>
+                            <Link to="/audio-system" className='NavItem'><li>აუდიო სისტემა</li></Link>
+                            <Link to="/television" className='NavItem'><li>ტელევიზორი</li></Link>
+                            <Link to="/gaming" className='NavItem'><li>გეიმინგი</li></Link>
+                            <Link to="/photo-video-technic" className='NavItem'><li>ფოტო | ვიდეო | ტექნიკა</li></Link>
                         </ul>
                     </div>            
                     </div>

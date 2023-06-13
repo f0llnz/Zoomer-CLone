@@ -1,0 +1,126 @@
+ .ItemTitle {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    color: #0a3251;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    padding: 3px;
+  }
+  
+  .ItemPicture {
+    display: flex;
+    margin: auto;
+  }
+  
+  .ListItem {
+    position: relative;
+    width: 238px;
+    margin: 10px;
+    border-radius: 7px;
+    display: inline-block;
+    background-color: #ffffff;
+    cursor: pointer;
+    z-index: 1;
+        &:hover{
+            h4{
+                color: #fe5f55;
+                text-decoration: underline;
+            }
+        }
+        .pricess{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-bottom: 5px;
+            .grayy{
+              margin-bottom: 0;
+              padding-left: 10px;
+              text-decoration: line-through;
+              font-size: 15px;
+              font-weight: 600;
+              color: #7b838e;
+              display: inline-block;
+            }
+        }
+  }
+
+  .borangeb{
+      width: 120px;
+      left: 107px;
+      bottom: 7px;
+      border-radius: 5px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      position: relative;
+      height: 6px; 
+      background-color: #fb7613;
+  }
+
+  .orangeb{
+    background-color: #fb7613;
+    color: white;
+    font-size: 13px;
+    border-radius: 5px;
+    position: absolute;
+    right: 15px;
+    top: -7px;
+    padding:5px;
+    width: auto;
+    box-sizing: content-box;
+  }
+  
+  .orangee {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fe5f55;
+    margin-bottom: 0;
+  }
+
+  .orangeee{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fe5f55;
+    padding-bottom: 20px;
+    margin-bottom: 0;
+  }
+
+  .hr{
+    border-bottom: 1px solid rgb(224, 222, 222);
+    padding-bottom: 10px;
+    text-align: center;
+    
+  }
+  
+  .Tocart {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 10px 10px;
+  }
+  
+  .Tocarttext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0a3251;
+  }
+  
+  .carticon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgb(212, 212, 212);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .carticon:hover {
+    background-color: #0a3251;
+  }

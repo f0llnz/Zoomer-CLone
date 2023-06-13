@@ -1,0 +1,41 @@
+.hotitems {
+    width: 51%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+  }
+
+.newitems{
+  border-radius: 10px;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  background-color: white;
+  margin-top: 1.5rem;
+}
+
+.newproducts{
+  padding-top: 2rem;
+  padding-bottom: 1.3rem;
+  display: flex;
+  position: relative;
+  padding-left: 25%;
+    .smt{
+      width: 2.33rem;
+      height: 2.33rem;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      border-radius: 5px;
+    }
+    p{
+      color: #093251;
+      line-height: 42px;
+      font-size: 17px;
+      padding-right: 17px;
+      padding-left: 15px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+}

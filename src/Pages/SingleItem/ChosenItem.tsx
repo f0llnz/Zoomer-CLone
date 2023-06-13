@@ -1,4 +1,4 @@
-import InfoBar from '../components/Navbar/Infobar/Infobar'
+import InfoBar from '../../components/Navbar/Infobar/Infobar'
 import SearchBar from './component/Navbar2/SPSearchbar'
 import ItemBody from './component/ItemBody/ItemBody'
 

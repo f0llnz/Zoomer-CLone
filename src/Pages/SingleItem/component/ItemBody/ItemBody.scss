@@ -185,9 +185,16 @@
 .rightt{
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 1.25px;
      P{
         font-size: 12px;
+     }
+     .righttdown{
+        height: 13.125rem;
+        font-size: 12px;
+        font-weight: 400;
+        color: #0a3251;
+        overflow: hidden;
      }
 }
 

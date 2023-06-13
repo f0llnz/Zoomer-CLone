@@ -1,4 +1,57 @@
-type allReducers = ({
-    api: [{}]
-    isLogged: boolean
-})
+type ChosenListItems = {
+    id: 0,
+    brand: string,
+    categories: [],
+    description: string,
+    images?:[images[0], images[1], images[2], images[3]],
+    price: number,
+    rating: number,
+    title: string,
+};
+
+type ListItems = {
+    images: string[];
+    title: string;
+    price: number;
+    id:number;
+};
+
+type Product = {
+  id: string;
+  title: string;
+  image: string;
+  price: number;
+  description: string;
+};
+
+type Products = [{}]
+
+export type ProductProps = {
+  id: string;
+};
+
+export type ProductState = {
+  cartItem:BanckEndItem[]
+};
+
+export type itemProps = {
+  amount:string;
+  images:string[],
+  price:string;
+  id:string;
+  title:string;
+  item:string
+}
+
+export type BanckEndItem = {
+[x: string]: any;
+amount: string;
+brand: string
+categories:string;
+description:string[]; 
+id: string;
+images:string;
+price: string  | Number;
+rating: string;
+title:strin;
+}

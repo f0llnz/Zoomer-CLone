@@ -10,6 +10,7 @@ $secondaryColor:#fb7613;
 
 .carousel-control-prev-icon:hover {
     background-color: $primaryColor;
+    
 }
 
 .carousel-control-next-icon:hover{
@@ -47,3 +48,26 @@ $secondaryColor:#fb7613;
     height: 40%; 
 }
 
+.hot-sales{
+    padding-top: 2rem;
+    padding-bottom: 1.3rem;
+    display: flex;
+    position: relative;
+    padding-left: 25%;
+     h2{
+        color: #093251;
+        line-height: 42px;
+        font-size: 17px;
+        padding-right: 17px;
+        padding-left: 15px;
+        font-weight: 600;
+     }
+     .smt{
+        width:2.33rem;
+        height: 2.33rem;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        border-radius: 5px;
+     }
+}

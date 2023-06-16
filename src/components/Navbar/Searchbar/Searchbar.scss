@@ -34,6 +34,10 @@ $textColor:#0a3251;
     margin-bottom: 0px;
 }
 
+.textdeco{
+    text-decoration: none;
+}
+
 .logo{
     display: flex;
     flex-direction: column;
@@ -77,6 +81,23 @@ h1{
     justify-content: center;
     align-items: center;
     gap: 10px;
+        .PnA{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+                .orng{
+                    width: 24px;
+                    height: 15px;
+                    background-color: #ff5400;
+                    border-radius: 8px;
+                    color: #fff;
+                    font-size: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+        }
 }
 
 .cart p {
@@ -154,7 +175,7 @@ h1{
     color: inherit;
 }
 
-ul li {
+ul .Lii {
     border-bottom: 1px solid rgb(247, 243, 243);
     width: 13.2rem;
     transition: background-color 0.3s;

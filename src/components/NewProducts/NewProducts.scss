@@ -8,6 +8,9 @@
     cursor: pointer;
     z-index: 1;
     border-right: 1px solid rgb(244, 244, 244);
+        a{
+            text-decoration: none;
+        }
         &:hover{
             .NPItemTitle{
                 color: #fe5f55;

@@ -5,7 +5,7 @@
     margin-right:69px;
     z-index: 1;
     background-color: white;  
-    height: 21.4rem;
+    height: 21.5rem;
     min-height: 21.4rem;
     width: 275px;
     min-width: 275px;
@@ -20,7 +20,10 @@
             font-weight: 500;
         }
 
-        ul li{
-            width: 300px
+        .lii{
+            border-bottom: 1px solid rgb(247, 243, 243);
+            transition: background-color 0.3s;
+            padding-left: 1rem;
+            cursor: pointer;
         }
 }

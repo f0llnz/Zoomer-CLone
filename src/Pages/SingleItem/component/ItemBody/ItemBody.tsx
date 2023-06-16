@@ -1,9 +1,5 @@
 import './ItemBody.scss'
 
-import FirstPic from '../Imgs/PhonePic1.jpeg'
-import SecondPic from '../Imgs/phonepic2.jpeg'
-import ThirdPic from '../Imgs/phonepic3.jpeg'
-import AppleIcon from '../Imgs/appleicon.png'
 import arrows from '../Imgs/new-compare.svg'
 import location from '../Imgs/location.svg'
 import Newcart from '../Imgs/new-cart.svg'
@@ -16,17 +12,45 @@ import Taxfree from '../Imgs/taxfree.svg'
 
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import ajax from '../../../../utils/service/ajax';
-import { ChosenListItems } from '../../../../@types/general'
+import { CartItem, ChosenListItems } from '../../../../@types/general'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../../../utils/cartSLice'
 
 
 
 
 export default function ItemBody(){
     const [singleProduct, setSingleProduct] = useState<ChosenListItems | null>(null);
+    const [selectedMemory, setSelectedMemory] = useState('128GB');
+    const [selectedColor, setSelectedColor] = useState('#0a3251');
+    const [price, setPrice] = useState(singleProduct?.price);
+    const dispatch = useDispatch()
+
+    const handleIncreaseQuantity = (cartItem:CartItem) => {
+        dispatch(addToCart(cartItem))
+      }
+  
+    const handleMemoryChange = (memory: string) => {
+      setSelectedMemory(memory);
+  
+      if (memory === '256GB') {
+        setPrice(singleProduct?.price! * 2);
+      } else {
+        setPrice(singleProduct?.price!);
+      }
+    };
+
+    const handleColorChange = (color: string) => {
+        setSelectedColor(color);
+      };
 
     const { id } = useParams();
-    console.log(id);
+
+    useEffect(() => {
+        if (singleProduct) {
+          setPrice(singleProduct.price);
+        }
+      }, [singleProduct]);
   
     useEffect(() => {
         const getItem = async () => {
@@ -46,6 +70,7 @@ export default function ItemBody(){
     return <div>Loading...</div>;
   }
 
+
     return(
         <div className="ChosenItem">
             <div className="itembody">
@@ -63,7 +88,7 @@ export default function ItemBody(){
                             <p>{singleProduct.brand}</p>
                             <h6>#XZOOM-{singleProduct.id}</h6>
                         </div>
-                        <h3>{singleProduct.title}</h3>
+                        <h3 style={{ color: selectedColor }}>{singleProduct.title}</h3>
                         <div className="nexttwo">
                             <p><img src={arrows} alt="arrows" style={{ marginRight: '10px' }} />შედარება</p>
                             <p><img src={location} alt="location" style={{ marginRight: '10px' }} />მარაგშია</p>
@@ -75,29 +100,39 @@ export default function ItemBody(){
                                 <span className="light">ფერი:</span>
                                 <span className="dark"> Blue</span>
                             </p>
-                            <div className="colors">
-                                <div className="a g"></div>
-                                <div className="b g"></div>
-                                <div className="c g"></div>
-                                <div className="d g"></div>
-                                <div className="e g"></div>
-                                <div className="f g"></div>
+                                <div className="colors">
+                                <div className={`a g ${selectedColor === 'Black' ? 'selected' : ''}`} onClick={() => handleColorChange('Black')}></div>
+                                <div className={`b g ${selectedColor === 'Pink' ? 'selected' : ''}`} onClick={() => handleColorChange('Pink')}></div>
+                                <div className={`c g ${selectedColor === 'Beige' ? 'selected' : ''}`} onClick={() => handleColorChange('Beige')}></div>
+                                <div className={`d g ${selectedColor === 'Gray' ? 'selected' : ''}`} onClick={() => handleColorChange('Gray')}></div>
+                                <div className={`e g ${selectedColor === 'Red' ? 'selected' : ''}`} onClick={() => handleColorChange('Red')}></div>
+                                <div className={`f g ${selectedColor === '#0a3251' ? 'selected' : ''}`} onClick={() => handleColorChange('#0a3251')}></div>
                             </div>
                             <p>
                                 <span className="light">მეხსიერება:</span>
                                 <span className="dark"> 128GB</span>
                             </p>
                             <div className="storage">
-                                <div className="a-a">128GB</div>
-                                <div className='a-b'>256GB</div>
+                            <button
+                                className={`a-a ${selectedMemory === '128GB' ? 'selected' : ''}`}
+                                onClick={() => handleMemoryChange('128GB')}
+                            >
+                                128GB
+                            </button>
+                            <button
+                                className={`a-b ${selectedMemory === '256GB' ? 'selected' : ''}`}
+                                onClick={() => handleMemoryChange('256GB')}
+                            >
+                                256GB
+                            </button>
                             </div>
                             <p>
                                 <span className="light">მოდელი:</span>
                                 <span className="dark"> 14</span>
                             </p>
                             <div className="Model">
-                                <div className="b-a">14</div>
-                                <div className="b-b">14 Plus</div>
+                                <div className="b-a">Base</div>
+                                <div className="b-b">Pro</div>
                             </div>
                         </div>
                         <div className="rightt">
@@ -131,16 +166,16 @@ export default function ItemBody(){
             <div className="Sale">
                 <div className="price">
                     <div className="priceinfo">
-                        <p className='Original'>{singleProduct.price - 100} ₾</p>
-                        <p className='Now'>{singleProduct.price} ₾</p>
+                        <p className='Original'>{price} ₾</p>
+                        <p className='Now'>{price != null ? (price - (price * 10) / 100).toFixed(2) : ""} ₾ </p>
                         <p><img src={Eye} alt="eye" style={{ marginRight: '10px' }} /> ფასის კონტროლი</p>
                         <p><img src={Lock} alt="lock" style={{ marginRight: '10px' }} /> ფასის დაზღვევა</p>
                     </div>
                     <div className="buttons">
                         <div className="up">
-                            <div className="shoppingbag">
+                            <button className="shoppingbag" onClick={() => handleIncreaseQuantity(singleProduct as CartItem)}>
                                 <img src={Newcart} alt="" />
-                            </div>
+                            </button>
                             <button className='Buy'>ყიდვა</button>
                         </div>
                         <button className='Lower'> 

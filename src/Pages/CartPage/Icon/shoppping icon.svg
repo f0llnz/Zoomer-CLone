@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 84">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f5f5f5;
+      }
+
+      .cls-2 {
+        fill: #0a3251;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #ff8b11;
+      }
+
+      .cls-3 {
+        opacity: 0.5;
+      }
+    </style>
+  </defs>
+  <g id="Shoppping_icon" data-name="Shoppping icon" transform="translate(-574 -350)">
+    <circle id="Ellipse_51" data-name="Ellipse 51" class="cls-1" cx="42" cy="42" r="42" transform="translate(574 350)"/>
+    <g id="Group_634" data-name="Group 634" transform="translate(3.385 -5.473)">
+      <g id="noun_Shopping_Bag_1828098" data-name="noun_Shopping Bag_1828098" transform="translate(592.958 339.473)">
+        <g id="Group_131" data-name="Group 131" transform="translate(6.04 35)">
+          <path id="Path_152" data-name="Path 152" class="cls-2" d="M88.358,31a8.753,8.753,0,0,0-8.743,8.743v1.176h-5.5a1.552,1.552,0,0,0-1.543,1.721c.015.138,1.51,13.845,2.315,21.18a6.719,6.719,0,0,0,6.687,5.993H95.192a6.719,6.719,0,0,0,6.688-6L104.2,42.64a1.553,1.553,0,0,0-1.543-1.722H97.1V39.743A8.753,8.753,0,0,0,88.358,31ZM82.72,39.743a5.639,5.639,0,0,1,11.277,0v1.176H82.72Zm18.2,4.281L98.793,63.48a3.618,3.618,0,0,1-3.6,3.228H81.576a3.618,3.618,0,0,1-3.6-3.227c-.634-5.782-1.7-15.525-2.127-19.457h3.766v4.291a1.553,1.553,0,1,0,3.105,0V44.024H94v4.291a1.553,1.553,0,1,0,3.105,0V44.024Z" transform="translate(-72.565 -31)"/>
+        </g>
+      </g>
+      <g id="shopping-basket" transform="translate(595 332.686)">
+        <g id="Group_631" data-name="Group 631" transform="translate(-0.385 59.059)">
+          <ellipse id="Ellipse_50" data-name="Ellipse 50" class="cls-3" cx="11.501" cy="11.501" rx="11.501" ry="11.501" transform="translate(1.704 1.704)"/>
+          <path id="Path_1950" data-name="Path 1950" class="cls-4" d="M13.205,213.059a13.205,13.205,0,0,0-.106,26.41h.106a13.2,13.2,0,1,0,0-26.41Zm0,3.195a10.01,10.01,0,1,1-10.01,10.01A10,10,0,0,1,13.205,216.254Z" transform="translate(0 -213.059)"/>
+        </g>
+        <path id="Path_1951" data-name="Path 1951" class="cls-4" d="M175.929,386.8l-2.2-2.467a1.732,1.732,0,0,0-2.449,2.449l2.2,2.467a1.732,1.732,0,0,0,2.449-2.449Z" transform="translate(-148.448 -302.064)"/>
+      </g>
+    </g>
+  </g>
+</svg>

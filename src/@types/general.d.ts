@@ -7,6 +7,7 @@ type ChosenListItems = {
     price: number,
     rating: number,
     title: string,
+    cartQuantity:number,
 };
 
 type ListItems = {
@@ -14,6 +15,14 @@ type ListItems = {
     title: string;
     price: number;
     id:number;
+};
+
+type CartItem = {
+  images: string[];
+  title: string;
+  price: number;
+  id:number;
+  cartQuantity:number;
 };
 
 type Product = {

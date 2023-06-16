@@ -29,6 +29,9 @@
                 text-decoration: underline;
             }
         }
+        a{
+          text-decoration: none;
+        }
         .pricess{
           display: flex;
           justify-content: center;
@@ -114,7 +117,7 @@
   .carticon {
     width: 2.5rem;
     height: 2.5rem;
-    background-color: rgb(212, 212, 212);
+    background-color: rgb(243, 243, 243);
     border-radius: 5px;
     display: flex;
     justify-content: center;

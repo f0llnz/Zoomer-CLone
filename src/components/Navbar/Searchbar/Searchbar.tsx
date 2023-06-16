@@ -5,10 +5,30 @@ import CartI from './icons/cart.svg'
 import List from '../Searchbar/icons/list.svg'
 
 import {Link} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 import './Searchbar.scss'
+import { useEffect } from 'react'
+import { getTotals } from '../../../utils/cartSLice'
+
+interface RootState {
+    cart: {
+      cartTotalQuantity: number;
+      cartTotalAmount:number;
+    };
+}
 
 function Searchbar() {
+    const {cartTotalQuantity} = useSelector((state: RootState) => state.cart);
+    const {cartTotalAmount} = useSelector((state: RootState) => state.cart)
+    const cart = useSelector((state: { cart: any }) => state.cart);
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(getTotals());
+    }, [cart, dispatch])
+  
+    
     return(
         <div className="mteli">
             <div className="body">
@@ -26,13 +46,13 @@ function Searchbar() {
                             </div>
                         </span> 
                         <ul className='Navigation'>
-                            <Link to="/phones" className='NavItem'><li>ტელეფონი</li></Link>
-                            <Link to="/computers" className='NavItem'><li>კომპიუტერები</li></Link>
-                            <Link to="/headphones" className='NavItem'><li>ყურსასმენები</li></Link>
-                            <Link to="/audio-system" className='NavItem'><li>აუდიო სისტემა</li></Link>
-                            <Link to="/television" className='NavItem'><li>ტელევიზორი</li></Link>
-                            <Link to="/gaming" className='NavItem'><li>გეიმინგი</li></Link>
-                            <Link to="/photo-video-technic" className='NavItem'><li>ფოტო | ვიდეო | ტექნიკა</li></Link>
+                            <Link to="/SAMSUNG" className='NavItem'><li className='Lii'>სამსუნგი</li></Link>
+                            <Link to="/apple" className='NavItem'><li className='Lii'>ეფლი</li></Link>
+                            <Link to="/acer" className='NavItem'><li className='Lii'>ეისერი</li></Link>
+                            <Link to="/dell" className='NavItem'><li className='Lii'>დელი</li></Link>
+                            <Link to="/google" className='NavItem'><li className='Lii'>გუგლი</li></Link>
+                            <Link to="/redmi" className='NavItem'><li className='Lii'>რედმი</li></Link>
+                            <Link to="/SONY" className='NavItem'><li className='Lii'>სონი</li></Link>
                         </ul>
                     </div>            
                     </div>
@@ -49,10 +69,17 @@ function Searchbar() {
                         <img src={ProfileP} alt="Profile Icon" width={20} height={20}/>
                         <p>პროფილი</p>
                     </div>
-                    <div className="cart inner">
-                        <img src={CartI} alt="Cart Icon"  width={20} height={20}/>
-                        <p>0ლ</p>
-                    </div>
+                    <Link to={'/cart'} className='textdeco'>
+                        <div className="cart inner">
+                            <img src={CartI} alt="Cart Icon"  width={20} height={20}/>
+                            <div className="PnA">
+                                <div className="orng">
+                                    {cartTotalQuantity}
+                                </div>
+                                <p>{cartTotalAmount.toFixed(2)}</p>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

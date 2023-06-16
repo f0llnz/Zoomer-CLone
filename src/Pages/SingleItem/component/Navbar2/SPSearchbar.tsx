@@ -5,16 +5,31 @@ import CartI from '../Imgs/Cart.svg'
 import List from '../Imgs/List.svg'
 import CategoryList from '../CategoryList/CategoryList'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 import './SPSearchbar.scss'
+import { getTotals } from '../../../../utils/cartSLice'
 
-import { Link } from 'react-router-dom'
+interface RootState {
+    cart: {
+      cartTotalQuantity: number;
+      cartTotalAmount:number;
+    };
+}
 
 export default function SPSearchbar() {
     const [isOpen, setIsOpen] = useState(false)
-
-
+    const {cartTotalQuantity} = useSelector((state: RootState) => state.cart);
+    const {cartTotalAmount} = useSelector((state: RootState) => state.cart);
+    const cart = useSelector((state: { cart: any }) => state.cart);
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(getTotals());
+    }, [cart, dispatch])
+    
 
     return(
         <div className="Main">
@@ -35,10 +50,17 @@ export default function SPSearchbar() {
                         <img src={ProfileP} alt="Profile Icon" width={20} height={20}/>
                         <p>პროფილი</p>
                     </div>
-                    <div className="cart inner">
-                        <img src={CartI} alt="Cart Icon"  width={20} height={20}/>
-                        <p>0ლ</p>
-                    </div>
+                    <Link to={'/cart'} className='textdeco'>
+                        <div className="cart inner">
+                            <img src={CartI} alt="Cart Icon"  width={20} height={20}/>
+                            <div className="PnA">
+                                <div className="orng">
+                                    {cartTotalQuantity}
+                                </div>
+                                <p>{cartTotalAmount.toFixed(2)}</p>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
 

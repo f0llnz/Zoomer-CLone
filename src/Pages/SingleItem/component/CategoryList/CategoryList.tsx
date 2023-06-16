@@ -1,17 +1,20 @@
-import {Link} from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './CategoryList.scss';
 
-import './CategoryList.scss'
 
-export default function CategoryList() {
-    return(
-        <ul className='CategoryList'>
-            <li><Link to="/detailed" className='NavItem'>ტელეფონი</Link></li>
-            <li><Link to=" " className='NavItem'>კომპიუტერები</Link></li>
-            <li><Link to=" " className='NavItem'>ყურსასმენები</Link></li>
-            <li><Link to=" " className='NavItem'>აუდიო სისტემა</Link></li>
-            <li><Link to=" " className='NavItem'>ტელევიზორი</Link></li>
-            <li><Link to=" " className='NavItem'>გეიმინგი</Link></li>
-            <li><Link to=" " className='NavItem'>ფოტო | ვიდეო | ტექნიკა</Link></li>
-        </ul>
-    )
-}
+const CategoryList: React.FC = () => {
+  return (
+    <ul className='CategoryList'>
+      <Link to="/brands/SAMSUNG" className='NavItem'><li className='lii'>სამსუნგი</li></Link>
+      <Link to="/brands/apple" className='NavItem'><li className='lii'>ეფლი</li></Link>
+      <Link to="/brands/acer" className='NavItem'><li className='lii'>ეისერი</li></Link>
+      <Link to="/brands/dell" className='NavItem'><li className='lii'>დელი</li></Link>
+      <Link to="/brands/google" className='NavItem'><li className='lii'>გუგლი</li></Link>
+      <Link to="/brands/redmi" className='NavItem'><li className='lii'>რედმი</li></Link>
+      <Link to="/brands/SONY" className='NavItem'><li className='lii'>სონი</li></Link>
+    </ul>
+  );
+};
+
+export default CategoryList;

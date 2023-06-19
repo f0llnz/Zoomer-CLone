@@ -10,6 +10,12 @@ type ChosenListItems = {
     cartQuantity:number,
 };
 
+type Token = {
+  userId: string,
+  isAdmin: boolean,
+  exp: number
+}
+
 type ListItems = {
     images: string[];
     title: string;

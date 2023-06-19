@@ -57,6 +57,7 @@ $textColor:#0a3251;
             border-bottom: none;
             display: flex;
             margin-bottom: 0;
+            gap: 1rem;
                 li{
                     border: none;
                     width: auto;
@@ -86,4 +87,22 @@ $textColor:#0a3251;
     font-weight: 700;
     margin-bottom: 0;
     margin-top: 5px;
+}
+
+.LogoutBtn{
+    background: none;
+    outline: none;
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $textColor;
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+    top: 0.5rem;
+    left: 2rem;
+    border: 1px solid $textColor;
+    padding: 2px;
+    border-radius: 3px;
 }

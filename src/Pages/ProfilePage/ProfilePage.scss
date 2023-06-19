@@ -1,0 +1,19 @@
+.ProfileP{
+    width: 49.5%;
+    background-color: white;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin:auto;
+    margin-top:2rem;
+    padding:2rem;
+    border-radius: 10px;
+    align-items: center;
+        .form{
+            width: 80%;
+                input{
+                    width: 100%;
+                }
+        }
+}

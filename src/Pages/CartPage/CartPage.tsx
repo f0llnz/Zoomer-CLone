@@ -93,10 +93,10 @@ export default function CartPage() {
                   <h2>ჯამი</h2>
                 </div>
                 <div className="secondd">
-                  <p>სულ თანხა:_ _ _ _ _ _ _ _  {cart.cartTotalAmount}</p>
+                  <p>სულ თანხა:_ _ _ _ _ _ _ _  {parseFloat(cart.cartTotalAmount).toFixed(2)}</p>
                 </div>
                 <div className="thirdd">
-                  <p>ჯამი:_ _ _ _ _ _ _ _  {cart.cartTotalAmount}</p>
+                  <p>ჯამი:_ _ _ _ _ _ _ _  {parseFloat(cart.cartTotalAmount).toFixed(2)}</p>
                 </div>
                 <button className="cart-checkout">ყიდვა</button>
               </div>

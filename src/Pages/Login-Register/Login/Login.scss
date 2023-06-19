@@ -1,0 +1,36 @@
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+        input{
+            height: 3.5rem;
+            border-radius: 4px;
+            background-color: #fcfcfc;
+            border: solid 1px #eee;
+            font-size: 15px;
+            padding: 0 25px;
+            font-size: 16px;
+            line-height: normal;
+            outline: none;
+            width: 25%;
+        }
+        input::placeholder {
+            color: #0a3251;; 
+        }
+        button{
+            border-radius: 5px;
+            background-color: #0a3251;
+            height: 3.5rem;
+            border: none;
+            font-size: 13px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+            backface-visibility: hidden;
+            width: 25%;
+        }
+        button:hover{
+            background-color: #ff5000; 
+        }
+}

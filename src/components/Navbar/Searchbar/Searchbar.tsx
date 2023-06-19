@@ -4,12 +4,16 @@ import ProfileP from './icons/profile.svg'
 import CartI from './icons/cart.svg'
 import List from '../Searchbar/icons/list.svg'
 
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import jwtDecode from 'jwt-decode';
 
 import './Searchbar.scss'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getTotals } from '../../../utils/cartSLice'
+import Cookies from 'js-cookie';
+import { Toast } from 'react-bootstrap'
+import { toast } from 'react-toastify'
 
 interface RootState {
     cart: {
@@ -18,16 +22,49 @@ interface RootState {
     };
 }
 
+interface Token {
+    userId: string,
+    isAdmin: boolean,
+    exp: number
+}
+
 function Searchbar() {
+    const [isExitOpen, setIsExitOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get('token'));
     const {cartTotalQuantity} = useSelector((state: RootState) => state.cart);
     const {cartTotalAmount} = useSelector((state: RootState) => state.cart)
     const cart = useSelector((state: { cart: any }) => state.cart);
     const dispatch = useDispatch();
-  
+    const navigate = useNavigate();
+
+    const handleProfileClick = () => {
+        const token = Cookies.get('token');
+        if (token) {
+          const decodedToken = jwtDecode<Token>(token);
+          const userId = decodedToken.userId
+          console.log(decodedToken)
+          navigate(`/profile/${userId}`);
+        } else {
+          navigate('/authorisation');
+        }
+      };
+
+    const handleBrandClick = (brand: string) => {
+      navigate(`/brand/${brand}`);
+    }
+
     useEffect(() => {
       dispatch(getTotals());
     }, [cart, dispatch])
-  
+
+    const handleLogout = () => {
+        Cookies.remove('token');
+        setIsLoggedIn(false);
+        navigate('/');
+        toast.error(`You have logged out`, {
+            position: "top-center",
+          });
+      };
     
     return(
         <div className="mteli">
@@ -46,13 +83,13 @@ function Searchbar() {
                             </div>
                         </span> 
                         <ul className='Navigation'>
-                            <Link to="/SAMSUNG" className='NavItem'><li className='Lii'>სამსუნგი</li></Link>
-                            <Link to="/apple" className='NavItem'><li className='Lii'>ეფლი</li></Link>
-                            <Link to="/acer" className='NavItem'><li className='Lii'>ეისერი</li></Link>
-                            <Link to="/dell" className='NavItem'><li className='Lii'>დელი</li></Link>
-                            <Link to="/google" className='NavItem'><li className='Lii'>გუგლი</li></Link>
-                            <Link to="/redmi" className='NavItem'><li className='Lii'>რედმი</li></Link>
-                            <Link to="/SONY" className='NavItem'><li className='Lii'>სონი</li></Link>
+                            <Link to="/brand/SAMSUNG" className='NavItem'><li onClick={() => handleBrandClick("SAMSUNG")}><span className='Lii'>სამსუნგი</span></li></Link>
+                            <Link to="/brand/apple" className='NavItem'><li onClick={() => handleBrandClick("apple")}><span className='Lii'>ეფლი</span></li></Link>
+                            <Link to="/brand/acer" className='NavItem'><li onClick={() => handleBrandClick("acer")}><span className='Lii'>ეისერი</span></li></Link>
+                            <Link to="/brand/dell" className='NavItem'> <li onClick={() => handleBrandClick("dell")}><span className='Lii'>დელი</span></li></Link>
+                            <Link to="/brand/google" className='NavItem'> <li onClick={() => handleBrandClick("google")}><span className='Lii'>გუგლი</span></li></Link>
+                            <Link to="/brand/redmi" className='NavItem'> <li onClick={() => handleBrandClick("redmi")}><span className='Lii'>რედმი</span></li></Link>
+                            <Link to="/brand/SONY" className='NavItem'><li onClick={() => handleBrandClick("SONY")}><span className='Lii'>სონი</span></li></Link>
                         </ul>
                     </div>            
                     </div>
@@ -65,10 +102,24 @@ function Searchbar() {
                     <img src={SearchI} width={20} height={20} alt="SearchIcon" className='loop' />
                 </div>
                 <div className="actions inner">
-                    <div className="profile">
-                        <img src={ProfileP} alt="Profile Icon" width={20} height={20}/>
-                        <p>პროფილი</p>
-                    </div>
+                        {isLoggedIn ? (
+                            <div className="profile-dropdown">
+                                <button className="profile" onClick={handleProfileClick} onMouseEnter={() => setIsExitOpen(true)} onMouseLeave={() => setIsExitOpen(false)}>
+                                    <img src={ProfileP} alt="Profile Icon" width={20} height={20} />
+                                    <p>პროფილი</p>
+                                </button>
+                                {isExitOpen && (
+                                    <div className="dropdown-content" onMouseEnter={() => setIsExitOpen(true)} onMouseLeave={() => setIsExitOpen(false)}>
+                                        <button className='LogoutBtn' onClick={handleLogout}>გასვლა</button>
+                                    </div>
+                                )}
+                            </div>
+                            ) : (
+                                <button className="profile" onClick={handleProfileClick}>
+                                    <img src={ProfileP} alt="Profile Icon" width={20} height={20} />
+                                    <p>პროფილი</p>
+                                </button>
+                            )}
                     <Link to={'/cart'} className='textdeco'>
                         <div className="cart inner">
                             <img src={CartI} alt="Cart Icon"  width={20} height={20}/>

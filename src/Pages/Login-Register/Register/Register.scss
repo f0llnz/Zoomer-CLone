@@ -1,0 +1,55 @@
+.Register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+                button{
+                    border-radius: 5px;
+                    background-color: #0a3251;
+                    height: 3.5rem;
+                    border: none;
+                    font-size: 13px;
+                    text-align: center;
+                    color: #fff;
+                    cursor: pointer;
+                    transition: all .2s ease-in-out;
+                    backface-visibility: hidden;
+                    width: 25%;
+                }
+
+                button:hover{
+                    background-color: #ff5000; 
+                }
+                
+                input{
+                    height: 55px;
+                    border-radius: 4px;
+                    background-color: #fcfcfc;
+                    border: solid 1px #eee;
+                    font-size: 15px;
+                    padding: 0 25px;
+                    font-size: 16px;
+                    line-height: normal;
+                    outline: none;
+                    width: 98.5%;
+                }
+                input::placeholder {
+                    color: #0a3251;; 
+                  }
+        }
+        .nameandlastname, .passwords{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+                .password1, .password2, .lastN, .firstN{
+                    width: 100%;
+                    input{
+                        width: 97%;
+                    }
+                }
+        }
+}

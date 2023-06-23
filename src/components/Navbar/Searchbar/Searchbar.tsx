@@ -1,19 +1,25 @@
 import ZLogo from './icons/logo.svg'
-import SearchI from '../Images/search.png'
 import ProfileP from './icons/profile.svg'
 import CartI from './icons/cart.svg'
 import List from '../Searchbar/icons/list.svg'
+import Samsung from '../../../Pages/SingleItem/component/CategoryList/categoryIcons/samsung.png'
+import Dell from '../../../Pages/SingleItem/component/CategoryList/categoryIcons/dell.png'
+import Acer from '../../../Pages/SingleItem/component/CategoryList/categoryIcons/acer.png'
+import Apple from '../../../Pages/SingleItem/component/CategoryList/categoryIcons/apple.png'
+import Google from '../../../Pages/SingleItem/component/CategoryList/categoryIcons/google.png'
+import Redmi from '../../../Pages/SingleItem/component/CategoryList/categoryIcons/redmi.png'
+import Sony from '../../../Pages/SingleItem/component/CategoryList/categoryIcons/sony.png'
 
 import {Link, useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation} from 'react-i18next'
 import jwtDecode from 'jwt-decode';
 
 import './Searchbar.scss'
 import { useEffect, useState } from 'react'
 import { getTotals } from '../../../utils/cartSLice'
-import Cookies from 'js-cookie';
-import { Toast } from 'react-bootstrap'
 import { toast } from 'react-toastify'
+import SearchbarI from '../Searchbarinput/SearchbarI'
 
 interface RootState {
     cart: {
@@ -30,15 +36,16 @@ interface Token {
 
 function Searchbar() {
     const [isExitOpen, setIsExitOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get('token'));
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
     const {cartTotalQuantity} = useSelector((state: RootState) => state.cart);
     const {cartTotalAmount} = useSelector((state: RootState) => state.cart)
     const cart = useSelector((state: { cart: any }) => state.cart);
+    const { t } = useTranslation(["common"])
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleProfileClick = () => {
-        const token = Cookies.get('token');
+        const token = localStorage.getItem('token');
         if (token) {
           const decodedToken = jwtDecode<Token>(token);
           const userId = decodedToken.userId
@@ -58,9 +65,9 @@ function Searchbar() {
     }, [cart, dispatch])
 
     const handleLogout = () => {
-        Cookies.remove('token');
+        localStorage.removeItem('token');
         setIsLoggedIn(false);
-        navigate('/');
+        navigate('/authorisation');
         toast.error(`You have logged out`, {
             position: "top-center",
           });
@@ -79,45 +86,38 @@ function Searchbar() {
                                 <img src={List} className='ListN' alt="" />
                             </div>
                             <div className='Hname'>
-                                ნავიგაცია
+                                {t("Navigation")}
                             </div>
                         </span> 
                         <ul className='Navigation'>
-                            <Link to="/brand/SAMSUNG" className='NavItem'><li onClick={() => handleBrandClick("SAMSUNG")}><span className='Lii'>სამსუნგი</span></li></Link>
-                            <Link to="/brand/apple" className='NavItem'><li onClick={() => handleBrandClick("apple")}><span className='Lii'>ეფლი</span></li></Link>
-                            <Link to="/brand/acer" className='NavItem'><li onClick={() => handleBrandClick("acer")}><span className='Lii'>ეისერი</span></li></Link>
-                            <Link to="/brand/dell" className='NavItem'> <li onClick={() => handleBrandClick("dell")}><span className='Lii'>დელი</span></li></Link>
-                            <Link to="/brand/google" className='NavItem'> <li onClick={() => handleBrandClick("google")}><span className='Lii'>გუგლი</span></li></Link>
-                            <Link to="/brand/redmi" className='NavItem'> <li onClick={() => handleBrandClick("redmi")}><span className='Lii'>რედმი</span></li></Link>
-                            <Link to="/brand/SONY" className='NavItem'><li onClick={() => handleBrandClick("SONY")}><span className='Lii'>სონი</span></li></Link>
+                            <Link to="/brand/SAMSUNG" className='NavItem'><li onClick={() => handleBrandClick("SAMSUNG")}><span className='Lii'><img src={Samsung} alt="samsung icon" width={25}/>{t("Samsung")}</span></li></Link>
+                            <Link to="/brand/apple" className='NavItem'><li onClick={() => handleBrandClick("apple")}><span className='Lii'><img src={Apple} alt="apple icon" width={25}/>{t("Apple")}</span></li></Link>
+                            <Link to="/brand/acer" className='NavItem'><li onClick={() => handleBrandClick("acer")}><span className='Lii'><img src={Acer} alt="acer icon" width={25}/>{t("Acer")}</span></li></Link>
+                            <Link to="/brand/dell" className='NavItem'> <li onClick={() => handleBrandClick("dell")}><span className='Lii'><img src={Dell} alt="dell icon" width={25}/>{t("Dell")}</span></li></Link>
+                            <Link to="/brand/google" className='NavItem'> <li onClick={() => handleBrandClick("google")}><span className='Lii'><img src={Google} alt="google icon" width={25}/>{t("Google")}</span></li></Link>
+                            <Link to="/brand/redmi" className='NavItem'> <li onClick={() => handleBrandClick("redmi")}><span className='Lii'><img src={Redmi} alt="redmi icon" width={25}/>{t("Redmi")}</span></li></Link>
+                            <Link to="/brand/SONY" className='NavItem'><li onClick={() => handleBrandClick("SONY")}><span className='Lii'><img src={Sony} alt="sony icon" width={25}/>{t("Sony")}</span></li></Link>
                         </ul>
                     </div>            
-                    </div>
-                <div className="searchbar">
-                    <input
-                    className='searchinput' 
-                    type="text"
-                    placeholder='ძიება...'
-                    />
-                    <img src={SearchI} width={20} height={20} alt="SearchIcon" className='loop' />
                 </div>
+                <SearchbarI />
                 <div className="actions inner">
                         {isLoggedIn ? (
                             <div className="profile-dropdown">
                                 <button className="profile" onClick={handleProfileClick} onMouseEnter={() => setIsExitOpen(true)} onMouseLeave={() => setIsExitOpen(false)}>
                                     <img src={ProfileP} alt="Profile Icon" width={20} height={20} />
-                                    <p>პროფილი</p>
+                                    <p>{t("Profile")}</p>
                                 </button>
                                 {isExitOpen && (
                                     <div className="dropdown-content" onMouseEnter={() => setIsExitOpen(true)} onMouseLeave={() => setIsExitOpen(false)}>
-                                        <button className='LogoutBtn' onClick={handleLogout}>გასვლა</button>
+                                        <button className='LogoutBtn' onClick={handleLogout}>{t("Logout")}</button>
                                     </div>
                                 )}
                             </div>
                             ) : (
                                 <button className="profile" onClick={handleProfileClick}>
                                     <img src={ProfileP} alt="Profile Icon" width={20} height={20} />
-                                    <p>პროფილი</p>
+                                    <p>{t("Profile")}</p>
                                 </button>
                             )}
                     <Link to={'/cart'} className='textdeco'>

@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import "react-toastify/dist/ReactToastify.css"
 
+import "./Helper/i18n.ts"
+
+import { Suspense } from 'react'
 import { BrowserRouter} from 'react-router-dom'
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
@@ -11,6 +14,7 @@ import { ToastContainer } from 'react-toastify'
 import ProductsReducer, { productsFetch } from './utils/ProductSlice.ts'
 import { productsApi } from './utils/ProductsApi.ts'
 import cartReducer, { getTotals } from './utils/cartSLice.ts'
+
 
 const store = configureStore({
   reducer:{
@@ -28,11 +32,13 @@ store.dispatch(getTotals());
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
+    <Suspense fallback={null}>
       <BrowserRouter>
         <ToastContainer/>
           <Provider store={store}>
             <App />
           </Provider>
       </BrowserRouter>
+    </Suspense>
   </React.StrictMode>,
 )

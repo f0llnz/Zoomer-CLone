@@ -1,0 +1,106 @@
+.npiconss{
+    display: flex;
+    gap: 5px;
+        .firstone{
+            background: #99a8b4;
+            width: 31px;
+            height: 31px;
+            border-radius: 3px;
+            background-color: #0a3251;
+            display: inline-flex;
+            justify-content: center;
+            transition: all .2s ease-in-out;
+            cursor: pointer;
+                &:hover{
+                    background-color: #104369;
+                    }
+        }
+}
+
+.more-button{
+    margin-left: 50%;
+    display: block;
+    width: 120px;
+    height: 50px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: solid 1px #eee;
+    margin: auto;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0a3251;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 20px;
+    transition: all .2s ease-in-out;
+    z-index: 1;
+    position: relative;
+    bottom: 2rem;
+    left: 8rem;
+        &:hover{
+            color: #ff5000;
+        }
+}
+
+.productandfilter{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    position: relative;
+    margin: auto;
+        .pricerange{
+            width: 18%;
+            right: 3rem;
+            padding: 2rem;
+            margin-top: 2.4rem;
+            border-radius: 10px;
+            height: 15rem;
+            background-color: white;
+        }
+}
+
+.BrandProductsBody{
+    width: 83%;
+    padding: 2rem;
+    border-radius: 5px;
+    padding-right: 0;
+        .imageButtons{
+            .leftt, .rightt {
+                background: none;
+                outline: none;
+                border: none;
+            }
+            .leftt{
+                position: absolute;
+                bottom: 12rem;
+                left: .5rem;
+            }
+            .rightt{
+                position: absolute;
+                bottom: 12rem;
+                left: 12.9rem;
+            }
+        }
+        .Mako{
+            background-color: white;
+            width: 240px;
+            margin: 0.4rem;
+            padding-top: 2rem;
+            padding-bottom: 1rem;
+
+                .maininfoo{
+                    position: relative;
+                        .darkblue{
+                            color: #0a3251 ;
+                            font-weight: 500;
+                        }
+                        .darkbluee{
+                            font-size: 12px;
+                        }
+                        p{
+                            margin-bottom: 0;
+                        }
+                }
+        }
+}
+

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 10rem;
+    padding-bottom: 3rem;
     .firsttwo{
         background-color: white;
         width: 100%;
@@ -17,6 +17,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding-bottom: 10rem;
             .both-cart{
                 display: flex;
                 justify-content: space-between;
@@ -117,6 +118,22 @@
                                 font-weight: 300;
                                 margin-bottom: 0;
                             }
+                            .carttitle{
+                                position: relative;
+                                right:4.5rem;
+                            }
+                            .cartquantity{
+                                position: relative;
+                                right: 1.3rem;
+                            }
+                            .cartprice{
+                                position: relative;
+                                left: 1.3rem;
+                            }
+                            .cartsum{
+                                position: relative;
+                                left: 1.3rem;
+                            }
                     }
 
                     .cart-items-body{
@@ -206,6 +223,7 @@
         width: 50%;
         background-color: white;
         border-radius: 10px;
+        margin-bottom: 10rem;
         a{
             text-decoration: none;
         }
@@ -217,6 +235,7 @@
                 justify-content: center;
                 align-items: center;
                 gap: 0.6rem;
+                margin-bottom: 10rem;
                     h4, h5 {
                     margin-bottom: 0;
                     text-decoration: none;

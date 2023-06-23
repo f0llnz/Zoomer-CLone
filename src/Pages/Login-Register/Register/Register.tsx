@@ -30,7 +30,6 @@ export default function Register()  {
   const validationSchema = yup.object().shape({
     firstName: yup.string().required('First name is required'),
     lastName: yup.string().required('Last name is required'),
-    email: yup.string().email('Invalid email').required('Email is required'),
     phoneNumber: yup.number().required('Phone Number is required'),
     password: yup.string().required('Password is required'),
     password2: yup
@@ -51,7 +50,7 @@ export default function Register()  {
           email: values.email,
           password: values.password,
         });
-          navigate('/authorisation')
+          navigate('/')
           toast.success(`You have Registered successfully`, {
             position: "top-center",
           });

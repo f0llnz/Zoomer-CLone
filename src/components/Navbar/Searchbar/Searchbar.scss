@@ -27,6 +27,9 @@ $textColor:#0a3251;
     display: flex;
     justify-content: center;
     align-items: center;
+        img{
+            cursor: pointer;
+        }
 }
 
 .navColumn h1 {
@@ -183,6 +186,9 @@ ul .Lii {
     transition: background-color 0.3s;
     padding-left: 1rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap:20px;
 }
 
 ul li:hover {
@@ -202,3 +208,4 @@ ul li:hover {
     width: 20px;
     height: 20px;
 }
+

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.3 15.3">
+    <defs>
+        <style>
+            .cls-1{fill:#455d7a;stroke:#455d7a;stroke-width:.3px}
+        </style>
+    </defs>
+    <g id="noun_envelope_1825605" transform="translate(-2.85 -6.85)">
+        <path id="Path_207" d="M20.75 21H4.25A2.25 2.25 0 0 1 2 18.75V8.25A2.25 2.25 0 0 1 4.25 6h16.5A2.25 2.25 0 0 1 23 8.25v10.5A2.25 2.25 0 0 1 20.75 21zM4.25 7.5a.75.75 0 0 0-.75.75v10.5a.75.75 0 0 0 .75.75h16.5a.75.75 0 0 0 .75-.75V8.25a.75.75 0 0 0-.75-.75z" class="cls-1" data-name="Path 207" transform="translate(1 1)"/>
+        <path id="Path_208" d="M13.513 16.008a.75.75 0 0 1-.413-.128l-6.75-4.5a.75.75 0 0 1 .833-1.245l6.75 4.5a.75.75 0 0 1-.42 1.373z" class="cls-1" data-name="Path 208" transform="translate(.237 .242)"/>
+        <path id="Path_209" d="M15.749 16.008a.75.75 0 0 1-.42-1.372l6.75-4.5a.75.75 0 0 1 .833 1.245l-6.75 4.5a.75.75 0 0 1-.413.127z" class="cls-1" data-name="Path 209" transform="translate(-1.999 .242)"/>
+    </g>
+</svg>

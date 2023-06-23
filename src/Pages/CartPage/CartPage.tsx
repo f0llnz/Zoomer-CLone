@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { CartItem } from "../../@types/general";
 import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart } from "../../utils/cartSLice";
+import { useTranslation} from 'react-i18next'
 import {useEffect} from 'react'
 
 import Infobar from '../../components/Navbar/Infobar/Infobar';
@@ -11,10 +12,12 @@ import Img from './Icon/shoppping icon.svg';
 import Close from './Icon/close.svg'
 
 import './CartPage.scss';
+import Footer from "../../components/Footer/Footer";
 
 
 export default function CartPage() {
   const cart = useSelector((state: { cart: any }) => state.cart);
+  const { t } = useTranslation(["common"])
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -48,8 +51,8 @@ export default function CartPage() {
           <Link to={'/'}>
             <div className="cart-text">
               <img src={Img} alt="arrow image" width={100}/>
-              <h4>თქვენი კალათა ცარიელია</h4>
-              <h5>გთხოვთ გადახვიდეთ გვერდზე და კალათაში დაამატოთ თქვენთვის სასურველი პროდუქტი</h5>
+              <h4>{t("Cartisempty")}</h4>
+              <h5>{t("Cartmessage")}</h5>
             </div>
           </Link>
         </div>
@@ -57,10 +60,10 @@ export default function CartPage() {
         <div className="cart-items">
               <div className="cart-left">
                 <div className="titles">
-                  <h3>პროდუქტის დასახელება</h3>
-                  <h3>რაოდენობა</h3>
-                  <h3>ფასი</h3>
-                  <h3>ჯამი</h3>
+                  <h3 className="carttitle">{t("Carttitle")}</h3>
+                  <h3 className="cartquantity">{t("Cartquantity")}</h3>
+                  <h3 className="cartprice">{t("Price")}</h3>
+                  <h3 className="cartsum">{t("Sum")}</h3>
                 </div>
                 <div className="cart-items-body">
                 {cart.cartItems?.map((cartItem: any) => ( 
@@ -85,23 +88,24 @@ export default function CartPage() {
                  ))}
                 </div>
                 <div className="clear-button">
-                  <button className="clear-cart" onClick={() => handleClearCart()}>კალათის გასუფთავება</button>
+                  <button className="clear-cart" onClick={() => handleClearCart()}>{t("Clearthecart")}</button>
                 </div>
               </div>
               <div className="cart-right">
                 <div className="firstt">
-                  <h2>ჯამი</h2>
+                  <h2>{t("Sum")}</h2>
                 </div>
                 <div className="secondd">
-                  <p>სულ თანხა:_ _ _ _ _ _ _ _  {parseFloat(cart.cartTotalAmount).toFixed(2)}</p>
+                  <p>{t("Balance")}:_ _ _ _ _ _ _ _  {parseFloat(cart.cartTotalAmount).toFixed(2)}</p>
                 </div>
                 <div className="thirdd">
-                  <p>ჯამი:_ _ _ _ _ _ _ _  {parseFloat(cart.cartTotalAmount).toFixed(2)}</p>
+                  <p>{t("Sum")}:_ _ _ _ _ _ _ _  {parseFloat(cart.cartTotalAmount).toFixed(2)}</p>
                 </div>
-                <button className="cart-checkout">ყიდვა</button>
+                <button className="cart-checkout">{t("Buy")}</button>
               </div>
             </div>
       )}
+      <Footer />
     </div>
   );
 }

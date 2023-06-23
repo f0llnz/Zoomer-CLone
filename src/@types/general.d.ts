@@ -1,13 +1,13 @@
 type ChosenListItems = {
-    id: 0,
-    brand: string,
-    categories: [],
-    description: string,
-    images?:[images[0], images[1], images[2], images[3]],
-    price: number,
-    rating: number,
-    title: string,
-    cartQuantity:number,
+  id: string;
+  title: string;
+  description: string;
+  images: string[];
+  brand: string;
+  category: string;
+  price: number;
+  rating: number;
+  amount: number;
 };
 
 type Token = {
@@ -21,6 +21,8 @@ type ListItems = {
     title: string;
     price: number;
     id:number;
+    cartQuantity:number;
+    currentImageIndex:number;
 };
 
 type CartItem = {

@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { useNavigate } from 'react-router';
 
 import Infobar from '../../components/Navbar/Infobar/Infobar';
 import Navbar from '../SingleItem/component/Navbar2/SPSearchbar';
 
 import './ProfilePage.scss';
+import Footer from '../../components/Footer/Footer';
 
 interface User {
   lastName: string;
@@ -19,12 +18,11 @@ interface User {
 
 const ProfilePage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const token = Cookies.get('token');
+        const token = localStorage.getItem('token');
         if (token) {
           const response = await axios.get('http://localhost:8080/me', {
             headers: {
@@ -47,17 +45,13 @@ const ProfilePage: React.FC = () => {
     lastName: string;
     phoneNumber: number;
     email: string;
-    password: string;
-    password2: string;
   }
 
   const initialValues: UpdateFormData = {
-    firstName: user?.firstName ?? '',
-    lastName: user?.lastName ?? '',
-    phoneNumber: user?.phoneNumber ?? 0,
-    email: user?.email ?? '',
-    password: '',
-    password2: '',
+    firstName: user?.firstName || '',
+    lastName: user?.lastName || '',
+    phoneNumber: user?.phoneNumber || 0,
+    email: user?.email || '',
   };
 
   const validationSchema = yup.object().shape({
@@ -65,10 +59,6 @@ const ProfilePage: React.FC = () => {
     lastName: yup.string(),
     email: yup.string().email('Invalid email').required('Email is required'),
     phoneNumber: yup.number().required('Phone Number is required'),
-    password: yup.string().required('Password is required'),
-    password2: yup
-      .string()
-      .oneOf([yup.ref('password'), ''], 'Passwords must match'),
   });
 
   const { values, handleSubmit, handleChange, errors } = useFormik({
@@ -76,7 +66,7 @@ const ProfilePage: React.FC = () => {
     validationSchema,
     onSubmit: async (values: UpdateFormData) => {
       try {
-        const token = Cookies.get('token');
+        const token = localStorage.getItem('token');
         if (token) {
           const response = await axios.post(
             'http://localhost:8080/user',
@@ -93,8 +83,9 @@ const ProfilePage: React.FC = () => {
               },
             }
           );
-
-          setUser(response.data);
+          const userInfo = response.data
+          console.log(userInfo)
+          setUser(userInfo);
           alert('User information updated successfully!');
         }
       } catch (error) {
@@ -114,6 +105,7 @@ const ProfilePage: React.FC = () => {
           <h1>Welcome, {user.firstName}!</h1>
           <div className="form">
             <form onSubmit={handleSubmit}>
+
               {errors.firstName && <div className="error">{errors.firstName}</div>}
               <label htmlFor="firstName">First Name</label>
               <input
@@ -157,12 +149,14 @@ const ProfilePage: React.FC = () => {
                 onChange={handleChange}
                 placeholder={user.email}
               />
-
+              
               <button type="submit">დაიმახსოვრე</button>
+
             </form>
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };

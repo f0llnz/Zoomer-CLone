@@ -6,6 +6,7 @@ import Login from './Login/Login';
 import Register from './Register/Register';
 import Infobar from '../../components/Navbar/Infobar/Infobar'
 import Navbar from '../SingleItem/component/Navbar2/SPSearchbar'
+import Footer from '../../components/Footer/Footer';
 
 const LoginAndRegister = () => {
     const [showLogin, setShowLogin] = useState(true);
@@ -45,6 +46,7 @@ const LoginAndRegister = () => {
             {showRegister && <Register />}
           </div>
         </div>
+        <Footer />
       </div>
     );
   };

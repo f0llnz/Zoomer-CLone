@@ -1,4 +1,4 @@
- .ItemTitle {
+.ItemTitle {
     font-size: 16px;
     font-weight: 500;
     text-align: center;
@@ -6,8 +6,9 @@
     height: 50px;
     position: relative;
     overflow: hidden;
+    margin-top: 1rem;
     padding: 3px;
-  }
+  } 
   
   .ItemPicture {
     display: flex;
@@ -18,11 +19,28 @@
     position: relative;
     width: 238px;
     margin: 10px;
-    border-radius: 7px;
+    border-radius: 5px;
     display: inline-block;
     background-color: #ffffff;
     cursor: pointer;
     z-index: 1;
+    padding-top: 2rem;
+        .ImageNavigation{
+          .leftt, .rightt {
+            background: none;
+            outline: none;
+            border: none;
+          }
+          .leftt{
+            position: absolute;
+            bottom: 13rem;
+          }
+          .rightt{
+            position: absolute;
+            bottom: 13rem;
+            left: 13.6rem;
+          }
+        }
         &:hover{
             h4{
                 color: #fe5f55;
@@ -52,7 +70,7 @@
   .borangeb{
       width: 120px;
       left: 107px;
-      bottom: 7px;
+      bottom: 2.5rem;
       border-radius: 5px;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;

@@ -25,5 +25,8 @@
             transition: background-color 0.3s;
             padding-left: 1rem;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap:20px
         }
 }

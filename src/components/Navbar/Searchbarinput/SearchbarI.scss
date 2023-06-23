@@ -1,0 +1,71 @@
+.SearchItems{
+    position: absolute;
+    top: 7.09rem;
+    z-index: 1;
+    width: 45.125rem;
+    height: 25rem;
+    background-color: white;
+    overflow: hidden;
+    overflow-y: auto;
+    margin-top: -0.6rem;
+    padding: 5px;
+    border: solid 1px #eff0f2;
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        .searcheditems{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            padding: 3px;
+            border-bottom: 1px solid rgb(238, 238, 238);
+                .title{
+                    font-size: 15px;
+                    color: #688093;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    height: 60px;
+                    transition: all .2s ease-in-out;
+                    font-weight: 600;
+                }
+                .searchprice{
+                    font-weight: 600;
+                    font-size: 15px;
+                    color: #0a3251;
+                }
+        }
+}
+
+.Searchbody{
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        .searchbar{
+            position: relative;
+            left: 0.38rem;
+            padding-right: 0;
+            width: 734px;
+                .searchinput{
+                    width: 100%;
+                    margin-right: 2.3rem;
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+                .loop{
+                    position: relative;
+                    right: 2rem;
+                }
+        }
+}

@@ -31,20 +31,24 @@ nav{
 }
 
 .language{
-    display: flex;
     gap: 5px;
-    border-left: 1px solid #b9c0c5;
+    border: none;
+    border-left: 1px solid rgb(235, 234, 234);
     padding-left: 12px;
-    justify-content: center;
-    align-items: center;
-    font-family: 'FiraGO', sans-serif;
+    color:#0a3251;
+    outline:none;
+    width: 5rem;
+    display: flex;
+        option{
+            border: none;
+            outline:none;
+        }
   }
 
 .gray{
     color: #99a8b4;
     font-size: 12px;
     margin-bottom: 0px;
-    font-family: 'FiraGO', sans-serif;
 }
 
 .red{

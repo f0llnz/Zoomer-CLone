@@ -1,5 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useTranslation} from 'react-i18next'
 
 import ImageOne from './Images/1.png'
 import ImageTwo from './Images/2.png'
@@ -11,6 +12,7 @@ import Hot from '../Images/hot-proposal.svg'
 import './Carousel.scss'
 
 function CarouselZ(): JSX.Element {
+    const { t } = useTranslation(["common"])
   return (
     <>
         <div className="Carousel">
@@ -60,7 +62,7 @@ function CarouselZ(): JSX.Element {
             <div className="smt">
                 <img src={Hot} alt="hot-promotions" width={17} />
             </div>
-            <h2>ცხელი შემოთავაზებები</h2>
+            <h2>{t("Hotoffers")}</h2>
         </div>
     </>
   );

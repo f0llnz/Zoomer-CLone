@@ -2,11 +2,20 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import Cookies from 'js-cookie';
-
-import './Login.scss'
 import { toast } from 'react-toastify';
 
+import jwtDecode, { JwtPayload } from 'jwt-decode';
+
+export const isUserAuthenticated = (): boolean => {
+  const key = localStorage.getItem('token');
+  if (!key) return false;
+  const decodedToken = jwtDecode<JwtPayload>(key);
+  const tokenExpireDate = decodedToken?.exp;
+  return !!tokenExpireDate && Date.now() < tokenExpireDate * 1000;
+  console.log(decodedToken)
+};
+
+import './Login.scss';
 
 interface LoginFormData {
   email: string;
@@ -21,7 +30,7 @@ const initialValues: LoginFormData = {
 export default function Login() {
   const navigate = useNavigate();
   const validationSchema = yup.object().shape({
-    email: yup.string().email('Invalid email').required('Email is required'),
+    email: yup.string().required('Email is required'),
     password: yup.string().required('Password is required'),
   });
 
@@ -34,19 +43,23 @@ export default function Login() {
           email: values.email,
           password: values.password,
         });
-        
-        const token = response.data.AccessToken; 
-        console.log(response.data)
-        
-        console.log('you have been logged in');
-        navigate('/');
+
+        const token = response.data.AccessToken;
+        console.log(response.data);
+
+        if (values.email === 'admin' && values.password === 'admin') {
+          navigate('/admin');
+        } else {
+          navigate('/');
+        }
+
         toast.success(`You have logged in successfully`, {
-          position: "top-center",
+          position: 'top-center',
         });
 
-        Cookies.set('token', token, { expires: 7 });
+        localStorage.setItem('token', token);
       } catch (error) {
-        alert('something went wrong, try again');
+        alert('Something went wrong. Please try again.');
       }
     },
   });
@@ -56,8 +69,8 @@ export default function Login() {
       <form onSubmit={handleSubmit}>
         <div>
           <input
-            placeholder='ელ. ფოსტა'
-            type="email"
+            placeholder="ელ. ფოსტა"
+            type="text"
             id="email"
             name="email"
             value={values.email}
@@ -67,7 +80,7 @@ export default function Login() {
         </div>
         <div>
           <input
-            placeholder='პაროლი'
+            placeholder="პაროლი"
             type="password"
             id="password"
             name="password"
@@ -80,4 +93,4 @@ export default function Login() {
       </form>
     </div>
   );
-};
+}

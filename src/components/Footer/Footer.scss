@@ -1,0 +1,170 @@
+.Footer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 11rem;
+        .Copyright{
+            padding-left: 25%;
+            padding-top: 1rem;
+            font-size: 14px;
+            color: #455d7a;
+            font-weight: 600;
+        }
+        .texts{
+            padding-top: 3rem;
+            width: 50%;
+            position: relative;
+            margin:auto;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid rgb(221, 221, 221);
+                .contacts{
+                    display: flex;
+                    flex-direction: column;
+                        .number-emial{
+                            padding-top: 1rem;
+                            display: flex;
+                            justify-content: space-between;
+                                .email{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 0.5rem;
+                                        a{
+                                            font-size: 13px;
+                                            color: #455d7a;
+                                            font-weight: 600;
+                                        }
+                                }
+                                .number{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 0.5rem;
+                                        p{
+                                            margin-bottom: 0;
+                                            font-size: 13px;
+                                            color: #455d7a;
+                                            font-weight: 600;
+                                        }
+                                }
+                        }
+                }
+                ul{
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                        li{
+                            font-size: 13px;
+                            color: #455d7a;
+                            display: block;
+                            margin-bottom: 10px;
+                            transition: all .2s ease-in-out;
+                            cursor: pointer;
+                                h3{
+                                    position: relative;
+                                    font-weight: bold;
+                                    font-size: 17px;
+                                    color: #0a3251;
+                                    margin-bottom:10px
+                                }
+                                
+                                &:hover{
+                                    color: #fe5f55;
+                                    background: none;
+                                }
+                        }
+                }
+        }
+        .blueBar{
+            width: 100%;
+            display: flex;
+            background-color: #0a3251;
+            height: 5rem;
+            justify-content: center;
+                .innerBlueBar{
+                    width: 50%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                        .GeoFlag{
+                            width: 20%;
+                            overflow: hidden;
+                            border-radius: 4px;
+                            border: 0.1px solid rgb(255, 254, 255);
+                            box-shadow: 0 3px 16px 0 rgba(0,0,0,.16);
+                            transition: all .2s ease-in-out;
+                            height: 3rem;
+                            background: transparent;
+                            color: #85a2b8;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding-left: 1rem;
+                            padding-right: 1rem;
+                                .gleft{
+                                    display: flex;
+                                    align-items: center;
+                                    p{
+                                        margin-bottom: 0;
+                                        padding-left: 1rem;
+                                        font-weight: 300;
+                                    }
+                                }
+                                p{
+                                    margin-bottom: 0;
+                                    padding-left: 1rem;
+                                    font-weight: 300;
+                                }
+                        }
+                        .dashoreba{
+                            display: flex;
+                            width: 50%;
+                            gap: 2rem;
+                            align-items: center;
+                                .blueInput{
+                                    border-radius: 6px;
+                                    border: none;
+                                    width: 100%;
+                                    padding: 0 50px 0 25px;
+                                    height: 55px;
+                                    border-radius: 5px;
+                                    background-color: #fff;
+                                        &::placeholder{
+                                            color: #0a3251;
+                                        }
+                                }
+                                .FbIcon,
+                                .YtIcon {
+                                    width: 3rem;
+                                    height: 3rem;
+                                    border: 0.01rem solid rgb(255, 254, 255);
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    padding: 15px;
+                                    border-radius: 100%;
+                                    transition: background-color 0.3s, color 0.3s;
+                                }
+
+                                .FbIcon:hover,
+                                .YtIcon:hover {
+                                    background-color: white;
+                                }
+
+                                .FbIcon:hover img,
+                                .YtIcon:hover img {
+                                    filter: invert(100%);
+                                }
+                        }
+                }
+        }
+}
+h3{
+    position: relative;
+    font-weight: bold;
+    font-size: 17px;
+    color: #0a3251;
+    margin-bottom:30px
+}

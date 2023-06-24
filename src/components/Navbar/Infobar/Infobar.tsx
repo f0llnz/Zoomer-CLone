@@ -21,7 +21,7 @@ function Navbar() {
   };
 
   return (
-    <nav>
+    <nav className='Infobarr'>
       <div className="left">
         <img src={PhoneImg} width={20} height={20} alt="Phone" />
         <p className="gray">{t("Hotline")}</p>

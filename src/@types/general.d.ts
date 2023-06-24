@@ -17,12 +17,12 @@ type Token = {
 }
 
 type ListItems = {
-    images: string[];
-    title: string;
-    price: number;
-    id:number;
-    cartQuantity:number;
-    currentImageIndex:number;
+  images: string[];
+  title: string;
+  price: number;
+  id: number;
+  cartQuantity?: number;
+  currentImageIndex?: number;
 };
 
 type CartItem = {

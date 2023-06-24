@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation} from 'react-i18next'
+import { useTranslation} from 'react-i18next';
 import jwtDecode from 'jwt-decode';
 
 import './SPSearchbar.scss';
@@ -14,6 +14,8 @@ import CartI from '../Imgs/Cart.svg';
 import List from '../Imgs/List.svg';
 import { toast } from 'react-toastify';
 import { getTotals } from '../../../../utils/cartSLice';
+
+import admin from '../../../../components/Navbar/Searchbar/icons/admin.png'
 import SearchbarI from '../../../../components/Navbar/Searchbarinput/SearchbarI';
 
 interface RootState {
@@ -55,10 +57,14 @@ export default function SPSearchbar() {
       });
   };
 
+  const token = localStorage.getItem('token');
+  const decodedToken = token ? jwtDecode<any>(token) : null;
+  const isAdmin = decodedToken && decodedToken.isAdmin;
+
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch])
-
+  
 
   return (
     <div className="Main">
@@ -68,6 +74,11 @@ export default function SPSearchbar() {
         </Link>
         <SearchbarI />
         <div className="actions inner">
+            {isAdmin && (
+                <Link to={'/admin'}>
+                  <button className="Admin"><img src={admin} alt="adminicon" width={20}/>{t("Admin")}</button>
+                </Link>
+              )}
             {isLoggedIn ? (
                 <div className="profile-dropdown">
                 <button className="profile" onClick={handleProfileClick} onMouseEnter={() => setIsExitOpen(true)} onMouseLeave={() => setIsExitOpen(false)}>

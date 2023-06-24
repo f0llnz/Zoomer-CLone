@@ -13,13 +13,21 @@ import NewProducts from '../../components/NewProducts/NewProducts';
 import Footer from '../../components/Footer/Footer';
 import PopularProducts from '../../components/PopularProducts/PopularProducts';
 import TopProducts from '../../components/TopProducts/TopProducts';
+import SPSearchbar from '../SingleItem/component/Navbar2/SPSearchbar';
 
 export default function MainPage() {
   const { t } = useTranslation(["common"])
   return (
     <>
       <Navbar />
-      <Searchbar />
+      <div className="Searchabrss">
+        <div className="nerti">
+          <Searchbar />
+        </div>
+        <div className='nori'>
+          <SPSearchbar />
+        </div>
+      </div>
       <CarouselZ />
       <div className="hotitems">
         <ListItem />

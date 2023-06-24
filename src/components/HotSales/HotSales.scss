@@ -67,6 +67,51 @@
         }
   }
 
+  .editButton{
+    background: none;
+    border: none;
+    position: absolute;
+    bottom: 21.5rem;
+    left: 0.5rem;
+  }
+
+  .editModal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+      h3{
+        position: relative;
+        top: 1.5rem
+      }
+      input{
+        width: 95%;
+        height: 3rem;
+        border-radius: 6px;
+        border: solid 1px #eff0f2;
+        padding: 0 6px;
+        font-size: 12px;
+          &::placeholder{
+            color: rgb(219, 219, 219);
+            width: 230px;
+          }
+      }
+      .ModalBtns{
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+          button{
+            background: #093251;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            transition: all 0.2s ease-in-out;
+            padding: 0.5rem 1rem
+          }
+      }
+  }
   .borangeb{
       width: 120px;
       left: 107px;

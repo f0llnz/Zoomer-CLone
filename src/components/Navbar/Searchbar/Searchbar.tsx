@@ -9,6 +9,7 @@ import Apple from '../../../Pages/SingleItem/component/CategoryList/categoryIcon
 import Google from '../../../Pages/SingleItem/component/CategoryList/categoryIcons/google.png'
 import Redmi from '../../../Pages/SingleItem/component/CategoryList/categoryIcons/redmi.png'
 import Sony from '../../../Pages/SingleItem/component/CategoryList/categoryIcons/sony.png'
+import admin from './icons/admin.png'
 
 import {Link, useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,6 +21,7 @@ import { useEffect, useState } from 'react'
 import { getTotals } from '../../../utils/cartSLice'
 import { toast } from 'react-toastify'
 import SearchbarI from '../Searchbarinput/SearchbarI'
+import { isAdminAuthenticated } from '../../../Helper/auth'
 
 interface RootState {
     cart: {
@@ -72,7 +74,11 @@ function Searchbar() {
             position: "top-center",
           });
       };
-    
+
+      const token = localStorage.getItem('token');
+      const decodedToken = token ? jwtDecode<any>(token) : null;
+      const isAdmin = decodedToken && decodedToken.isAdmin;
+
     return(
         <div className="mteli">
             <div className="body">
@@ -102,6 +108,11 @@ function Searchbar() {
                 </div>
                 <SearchbarI />
                 <div className="actions inner">
+                        {isAdmin && (
+                            <Link to={'/admin'}>
+                                <button className="Admin"><img src={admin} alt="adminicon" width={20}/>{t("Admin")}</button>
+                            </Link>
+                        )}
                         {isLoggedIn ? (
                             <div className="profile-dropdown">
                                 <button className="profile" onClick={handleProfileClick} onMouseEnter={() => setIsExitOpen(true)} onMouseLeave={() => setIsExitOpen(false)}>

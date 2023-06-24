@@ -10,9 +10,10 @@ import Cart from '../NewProducts/img/cart.svg'
 import Compare from '../NewProducts/img/compare_white.svg';
 import Left from '../HotSales/icons/left.svg'
 import Right from '../HotSales/icons/right.svg'
-import jwt_decode from 'jwt-decode';
+import Edit from '../HotSales/icons/edit-button.svg'
 
 import './popularproducts.scss';
+import jwtDecode from 'jwt-decode';
 
 interface ImageState {
   currentImage: number;
@@ -22,30 +23,18 @@ interface ImageState {
 export default function PopularProducts(): JSX.Element {
   const [products, setProducts] = useState<ListItems[]>([]);
   const [imageStates, setImageStates] = useState<ImageState[]>([]);
+  const [editTitle, setEditTitle] = useState('');
+  const [editPrice, setEditPrice] = useState<number>(0);
+  const [editImages, setEditImages] = useState<string[]>([]);
+  const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const { t } = useTranslation(["common"])
 
   const dispatch = useDispatch();
+  
+  const token = localStorage.getItem('token');
+  const decodedToken = token ? jwtDecode<any>(token) : null;
+  const isAdmin = decodedToken && decodedToken.isAdmin;
 
-  interface DecodedToken {
-    userId: string;
-    isAdmin: boolean;
-    exp: number;
-  }
-  
-  const isAdmin = useMemo(() => {
-    const token = localStorage.getItem('authToken');
-  
-    if (token) {
-      try {
-        const decodedToken = jwt_decode<DecodedToken>(token);
-        return decodedToken.isAdmin;
-      } catch (error) {
-        console.log('Invalid token');
-      }
-    }
-  
-    return false;
-  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -114,6 +103,51 @@ export default function PopularProducts(): JSX.Element {
     };
   }, [imageStates]);
 
+  const saveProductChanges = async () => {
+    if (editingIndex !== null) {
+      const editedProduct = {
+        id: products[editingIndex].id,
+        title: editTitle,
+        price: editPrice,
+        images: editImages,
+      };
+  
+      try {
+        const token = localStorage.getItem('token')
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        };
+  
+        await ajax.put(`http://localhost:8080/product/${editedProduct.id}`, editedProduct, config);
+  
+        setProducts(prevProducts => {
+          const updatedProducts = [...prevProducts];
+          updatedProducts[editingIndex] = editedProduct;
+          return updatedProducts;
+        });
+  
+        setEditTitle('');
+        setEditPrice(0);
+        setEditImages([]);
+        setEditingIndex(null);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const openEditModal = (index: number) => {
+    const product = products[index];
+    setEditTitle(product.title);
+    setEditPrice(product.price);
+    setEditImages(product.images);
+    setEditingIndex(index);
+  };
+
+
   return (
     <div>
       {products.map((item, index) => {
@@ -135,6 +169,11 @@ export default function PopularProducts(): JSX.Element {
                     <h4 className="NPItemTitle">{item.title}</h4>
               </div>
             </Link>
+            {isAdmin &&
+              <button className="editButttton" onClick={() => openEditModal(index)}>
+                <img src={Edit} alt="" width={20} />
+              </button>
+            }
             <div className="mainInfo">
               <div className="pricenpinfo">
                 <div className="top">
@@ -142,9 +181,9 @@ export default function PopularProducts(): JSX.Element {
                   <p className="grayy">{Math.ceil(item.price) - 10} ₾</p>
                 </div>
                 <p>
-                  <span className="gray">{t("Monthly ")}</span>
+                  <span className="gray">{t("Monthly")} </span>
                   <span className="orangeee">{randomNum} ₾</span>
-                  <span className="gray"> -{t(" From")}</span>
+                  <span className="gray"> - {t("From")}</span>
                 </p>
               </div>
               <div className="npicons">
@@ -160,6 +199,27 @@ export default function PopularProducts(): JSX.Element {
               <button className='leftt' onClick={() => goToPreviousImage(index)}><img src={Left} alt="LeftArrow" width={20}/></button>
               <button className='rightt' onClick={() => goToNextImage(index)}><img src={Right} alt="RightArrow" width={20}/></button>
             </div>
+            {editingIndex === index && (
+              <div className="editModal">
+                <h3>Edit Product</h3>
+                <input
+                  type="text"
+                  value={editTitle}
+                  onChange={e => setEditTitle(e.target.value)}
+                  placeholder="Title"
+                />
+                <input
+                  type="text"
+                  value={editPrice}
+                  onChange={e => setEditPrice(Number(e.target.value))}
+                  placeholder="Price"
+                />
+                <div className="ModalBtns">
+                  <button onClick={saveProductChanges}>Save</button>
+                  <button onClick={() => setEditingIndex(null)}>Cancel</button>
+                </div>
+              </div>
+            )}
           </div>
         );
       })}

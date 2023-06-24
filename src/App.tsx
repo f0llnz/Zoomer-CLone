@@ -11,6 +11,7 @@ import Searchbar from './components/Navbar/Searchbarinput/SearchbarI'
 import {Route, Routes} from 'react-router-dom'
 import LoginAndRegister from './Pages/Login-Register/LoginAndRegister'
 import Admin from './Pages/AdminPage/Admin'
+import CheckoutPage from './Pages/Checkout/Checkout'
 
 const App: React.FC = () => {
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
         <Route path="/profile/:userId" element={<ProfilePage />} />
         <Route path="/searchbar" element={<Searchbar />} />
         <Route path='/admin' element={<Admin />} />
+        <Route path='/checkout' element={<CheckoutPage />} />
       </Routes>
     </div>
   )

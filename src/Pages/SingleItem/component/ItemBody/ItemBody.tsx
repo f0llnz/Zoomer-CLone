@@ -20,6 +20,8 @@ import Delete from '../Imgs/delete-332.png'
 
 import { CartItem, ChosenListItems } from '../../../../@types/general';
 import ajax from '../../../../utils/ajax';
+import jwtDecode from 'jwt-decode';
+import { toast } from 'react-toastify';
 
 export default function ItemBody() {
   const [singleProduct, setSingleProduct] = useState<ChosenListItems | null>(null);
@@ -84,10 +86,15 @@ export default function ItemBody() {
       navigate('/Checkout')
     }else{
       navigate('/authorisation')
+      toast.info(`You have to Log in first`, {
+        position: "top-center",
+      });
     }
   }
 
-  const isAdmin = localStorage.getItem('token') !== null;
+  const token = localStorage.getItem('token');
+  const decodedToken = token ? jwtDecode<any>(token) : null;
+  const isAdmin = decodedToken && decodedToken.isAdmin;
 
   const handleDeleteProduct = async (productId: number) => {
     if (isAdmin) {

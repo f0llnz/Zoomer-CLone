@@ -56,6 +56,7 @@ export default function Register()  {
           });
         } catch (error){
           alert('somethings wrong, try again')
+          console.log(error)
       }
     },
   });
@@ -142,7 +143,7 @@ export default function Register()  {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">რეგისტრაცია</button>
+        <button className='Registerr' type="submit">რეგისტრაცია</button>
       </form>
     </div>
   )

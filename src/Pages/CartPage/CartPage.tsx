@@ -1,9 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartItem } from "../../@types/general";
 import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart } from "../../utils/cartSLice";
 import { useTranslation} from 'react-i18next'
 import {useEffect} from 'react'
+import { toast } from "react-toastify";
+
 
 import Infobar from '../../components/Navbar/Infobar/Infobar';
 import Navbar from '../SingleItem/component/Navbar2/SPSearchbar';
@@ -18,6 +20,7 @@ import Footer from "../../components/Footer/Footer";
 export default function CartPage() {
   const cart = useSelector((state: { cart: any }) => state.cart);
   const { t } = useTranslation(["common"])
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,6 +41,18 @@ export default function CartPage() {
 
   const handleClearCart = () => {
     dispatch(clearCart());
+  }
+
+  const handleBuy = () =>{
+    const token = localStorage.getItem('token'); 
+    if (token){
+      navigate('/Checkout')
+    }else{
+      navigate('/authorisation')
+      toast.info(`You have to Log in first`, {
+        position: "top-center",
+      });
+    }
   }
 
   return (
@@ -101,7 +116,7 @@ export default function CartPage() {
                 <div className="thirdd">
                   <p>{t("Sum")}:_ _ _ _ _ _ _ _  {parseFloat(cart.cartTotalAmount).toFixed(2)}</p>
                 </div>
-                <button className="cart-checkout">{t("Buy")}</button>
+                <button onClick={handleBuy} className="cart-checkout">{t("Buy")}</button>
               </div>
             </div>
       )}
